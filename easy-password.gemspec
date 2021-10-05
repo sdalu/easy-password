@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
       * hashing password to sha256, md5, sha, ntlm, lmhash
       EOF
 
-    s.homepage    = 'https://gitlab.com/sdalu/easy-password'
+    s.homepage    = 'https://github.com/sdalu/easy-password'
     s.license     = 'MIT'
 
     s.authors     = [ "Stéphane D'Alu" ]
