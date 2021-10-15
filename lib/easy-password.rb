@@ -236,6 +236,12 @@ class EasyPassword
     end
 
 
+    # Override equality
+    def ==(other)
+        !other.nil? && other.is_a?(EasyPassword) && self.raw == other.raw
+    end
+
+
     # Get the plain text password
     #
     # @return [String] plain text password
