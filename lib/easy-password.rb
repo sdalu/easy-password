@@ -1,4 +1,5 @@
 require 'openssl'
+require_relative 'easy-password/md4'
 
 #
 # Adding a simple password generator and using it by default:
@@ -206,7 +207,10 @@ class EasyPassword
     # @return [String] hashed password
     #
     def self.ntlm(password)
-        Digest::MD4.hexdigest(password.encode("utf-16le"))
+        # New version of OpenSSL doesn't provide MD4 anymore
+        # Digest::MD4.hexdigest(password.encode("utf-16le"))
+        self.digest_md4(password.encode("utf-16le").force_encoding('BINARY'))
+            .unpack1('H*')
     end
     
 
