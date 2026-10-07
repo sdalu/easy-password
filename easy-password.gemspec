@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
       Ease password creation by allowing:
       * password generation
       * password weakness checking
-      * hashing password to sha256, md5, sha, ntlm, lmhash
+      * hashing password to sha256, md5, sha, ssha, ntlm, lmhash
       EOF
 
     s.homepage    = 'https://github.com/sdalu/easy-password'

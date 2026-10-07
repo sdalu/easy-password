@@ -189,6 +189,18 @@ class EasyPassword
     end
 
 
+    # Create a salted SHA-hashed password (as OpenLDAP's {SSHA})
+    #
+    # @param [String] password  plain text password
+    # @param [String] salt      salt (random 8 bytes by default)
+    #
+    # @return [String] hashed password
+    #
+    def self.ssha(password, salt = OpenSSL::Random.random_bytes(8))
+        "{SSHA}"   + [Digest::SHA1.digest(password.b + salt) + salt].pack('m0')
+    end
+
+
     # Create a SHA256-hashed password
     #
     # @param [String] password  plain text password
@@ -260,6 +272,15 @@ class EasyPassword
     #
     def sha
         self.class.sha(@passwd)
+    end
+
+
+    # Get the salted SHA-hashed password
+    #
+    # @return [String] hashed password
+    #
+    def ssha
+        self.class.ssha(@passwd)
     end
 
 
